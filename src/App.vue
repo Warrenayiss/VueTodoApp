@@ -18,7 +18,10 @@ export default {
     
     //functions
     function addNewTodo(){
-      console.log(newTodo.value);
+      todos.value.push({
+        done: false,
+        content: newTodo.value
+      })
       newTodo.value = ""
     }
 
