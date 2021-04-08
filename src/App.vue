@@ -7,7 +7,7 @@
   </form>
   <ul>
     <li v-for="todo in todos" :key="todo.id">
-      <h3>{{ todo.content }}</h3>
+      <h3 :class="{ done: todo.done }" @click="toggleDone(todo)">{{ todo.content }}</h3>
     </li>
   </ul>
 </template>
@@ -30,12 +30,16 @@ export default {
       });
       newTodo.value = "";
     }
+    function toggleDone(todo){
+      todo.done = !todo.done
+    }
 
     //returns
     return {
       newTodo,
       todos,
       addNewTodo,
+      toggleDone,
     };
   },
 };
