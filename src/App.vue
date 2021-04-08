@@ -14,6 +14,7 @@ export default {
   setup() {
     //datas
     const newTodo = ref('')
+    const todos = ref([])
     
     //functions
     function addNewTodo(){
