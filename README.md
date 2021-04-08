@@ -1,5 +1,5 @@
-# todo-app
-
+# Todo App
+A simple Todo App made with Vue3
 ## Project setup
 ```
 npm install
