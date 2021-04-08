@@ -2,9 +2,14 @@
   <h3>Todo App</h3>
   <form @submit.prevent="addNewTodo">
     <label for="newTodo">New Todo</label>
-    <input name="newTodo" v-model="newTodo">
+    <input name="newTodo" v-model="newTodo" />
     <button>Add new Todo</button>
   </form>
+  <ul>
+    <li v-for="todo in todos" :key="todo.id">
+      <h3>{{ todo.content }}</h3>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -13,25 +18,27 @@ import { ref } from "vue";
 export default {
   setup() {
     //datas
-    const newTodo = ref('')
-    const todos = ref([])
-    
+    const newTodo = ref("");
+    const todos = ref([]);
+
     //functions
-    function addNewTodo(){
+    function addNewTodo() {
       todos.value.push({
+        id: Date.now(),
         done: false,
-        content: newTodo.value
-      })
-      newTodo.value = ""
+        content: newTodo.value,
+      });
+      newTodo.value = "";
     }
 
     //returns
     return {
       newTodo,
-      addNewTodo
-    }
-  }
-}
+      todos,
+      addNewTodo,
+    };
+  },
+};
 </script>
 
 <style>
@@ -43,8 +50,15 @@ body {
   width: 80%;
   margin: 0 auto;
 }
-input, textarea, button, p, div, section, article, select {
-  display: 'block';
+input,
+textarea,
+button,
+p,
+div,
+section,
+article,
+select {
+  display: "block";
   width: 100%;
   font-family: sans-serif;
   font-size: 1em;
